@@ -1,0 +1,140 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button *ngIf="!isFacilitator()"></ion-menu-button>
+            <ion-button backButton *ngIf="isFacilitator()">
+                <ion-icon size="large" src="assets/icon/backhex.svg" style="stroke:white;"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>{{'PROJECT' | translate}}: {{projecttitle}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="fullscreen" id="projectfullscreen">
+        <app-settings-map id="map" class='map' [actions]="action" [project]="project"></app-settings-map>
+        <div id="buttondiv" class="buttondiv hideitem">
+            <span> 
+                <ion-button id="resizemap" class="resizemap" (click)="collapse()">
+                    <ion-icon name="contract"></ion-icon>
+                </ion-button>
+            </span>
+        </div>
+        <div id="buttondivshow" class="buttondiv">
+            <span> 
+                <ion-button id="resizemap" class="resizemap" (click)="expand()">
+                    <ion-icon name="expand"></ion-icon>
+                </ion-button>
+            </span>
+        </div>
+    </div>
+    <div id='homepage' class='homepage'>
+        <ion-list *ngIf="ifhomepage">
+            <ion-item>
+                <ion-label>{{'PROJECTNAME' | translate}}:</ion-label>
+                <ion-input name='projectname' [(ngModel)]='project.name' readonly></ion-input>
+            </ion-item>
+            <ion-card *ngIf='!isFacilitator()'>
+                <ion-card-content>
+                    <ion-item-group>
+                        <ion-item-divider>
+                            {{'FORESTRIVERFUNCTION' | translate}}
+                        </ion-item-divider>
+
+                        <ion-item *ngFor='let funct of project.functions; let i=index'>
+                            <ion-label>{{functionsLetter[funct]}}: {{Functions[funct]}}</ion-label>
+                            <ion-icon slot='end' name="help-circle-outline" (click)='hoverModal(funct)'></ion-icon>
+                        </ion-item>
+
+                    </ion-item-group>
+                </ion-card-content>
+            </ion-card>
+            <ion-card *ngIf='isFacilitator()'>
+                <ion-card-header>
+                    <ion-card-title>
+                        <ion-label>STEP 1</ion-label>
+                    </ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-item-group>
+                        <ion-item-divider>
+                            {{'FORESTRIVERFUNCTION' | translate}}
+                        </ion-item-divider>
+
+                        <ion-item *ngFor='let funct of project.functions; let i=index'>
+                            <ion-label>{{functionsLetter[funct]}}: {{Functions[funct]}}</ion-label>
+                            <ion-icon slot='end' name="help-circle-outline" (click)='hoverModal(funct)'></ion-icon>
+                        </ion-item>
+
+                    </ion-item-group>
+                    <ion-label>{{"FPPAGE" | translate}}</ion-label>
+                    <ion-row class='ion-justify-content-center'>
+                        <ion-button (click)='gotofunctionpriority()' [color]='todolist.functionpriority ? "success" : "dark"'> {{"FPPAGE" | translate}} </ion-button>
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
+            <ion-card *ngIf='isFacilitator()'>
+                <ion-card-header>
+                    <ion-card-title>
+                        <ion-label>STEP 2</ion-label>
+                    </ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-item-group *ngIf='isFacilitator()'>
+                        <ion-item-divider>
+                            {{'PROJECTSTATE' | translate}}
+                        </ion-item-divider>
+                        <ion-item (click)="changeActivation($event)">
+                            <ion-label>Meet-in mode</ion-label>
+                            <ion-chip [ngStyle]='project.activated ? {background: "green"} : {background: "red"}'>
+                                <ion-label style='color:#fff'>{{status[project.activated]}}</ion-label>
+                            </ion-chip>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>{{"PARTECIPATORYCODE" | translate}}</ion-label>
+                            <ion-input [(ngModel)]="project.code"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>{{"EXPIRATIONDATE" | translate}}</ion-label>
+                            <ion-datetime [(ngModel)]="project.expirationdate" [pickerOptions]="customPickerOptions"></ion-datetime>
+                        </ion-item>
+                    </ion-item-group>
+
+                    <ion-row class='ion-justify-content-center'>
+                        <ion-button (click)='gotomeetinresult()' [color]='todolist.statisticresult ? "success" : "dark"'> MeetIN discussion</ion-button>
+                    </ion-row>
+
+                </ion-card-content>
+            </ion-card>
+            <ion-card *ngIf='isFacilitator()'>
+                <ion-card-header>
+                    <ion-card-title>
+                        <ion-label>STEP 3</ion-label>
+                    </ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-row class='ion-justify-content-center'>
+                        <ion-button (click)='gotoahp()' [color]='todolist.statisticresult || todolist.functionpriority ? "success" : "dark"' [disabled]='!todolist.functionpriority'> {{"FINALRESULT" | translate }} </ion-button>
+                    </ion-row>
+                </ion-card-content>
+
+            </ion-card>
+            <!-- 
+            <ion-card *ngIf='isFacilitator()'>
+                <ion-card-header>
+                    <ion-card-title>
+                        <ion-label>STEP 4</ion-label>
+                    </ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-row class='ion-justify-content-center'>
+                        <ion-button (click)='gotToPrintResult()' [color]='todolist.statisticresult || todolist.functionpriority ? "success" : "dark"' [disabled]='!todolist.functionpriority'> Print Result </ion-button>
+                    </ion-row>
+                </ion-card-content>
+
+            </ion-card> -->
+
+
+        </ion-list>
+    </div>
+</ion-content>

@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-button backButton>
+                <ion-icon size="large " src="assets/icon/backhex.svg " style="stroke:white; "></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>{{'MEETINUSER' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+    <ion-row class="ion-justify-content-center">
+
+        <p class="logo-row">
+
+            <b>
+            <h2>{{"PROJECT" | translate}}: {{project.name}}</h2>
+      
+          </b>
+
+
+        </p>
+
+    </ion-row>
+    <div class="login-box">
+        <form #groupnameForm="ngForm" (submit)="goToProject(groupnameForm)">
+            <ion-row class="ion-justify-content-center">
+                <ion-col size-sm="12" size-md="5">
+                    <ion-list inset>
+
+                        <ion-item>
+                            <ion-input placeholder="Insert your name or group name" name="groupname" [(ngModel)]='groupname' required></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label> {{"USERSNUMBER" | translate}} </ion-label>
+                            <ion-input type=number placeholder="1" name="groupnumber" [(ngModel)]='groupnumber' required></ion-input>
+                        </ion-item>
+                    </ion-list>
+                </ion-col>
+            </ion-row>
+            <ion-row class="ion-justify-content-center">
+                <ion-col size-sm="12" size-md="5">
+                    <ion-button expand="full" type="submit" color="primary" shape="round" [disabled]='!groupnameForm.form.valid'>{{'GOTOPROJECT' | translate}}</ion-button>
+                    <!-- <button ion-button class="register-btn" block clear (click)="createAccount()">Create New Account</button> -->
+                </ion-col>
+            </ion-row>
+        </form>
+    </div>
+</ion-content>

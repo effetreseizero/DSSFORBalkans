@@ -1,0 +1,114 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-button backButton>
+                <ion-icon size="large " src="assets/icon/backhex.svg " style="stroke:white; "></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button fill='outline' (click)="runAHP(ahpdata)"> Run </ion-button>
+        </ion-buttons>
+        <ion-title>{{'AHPPAGE' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item>
+            <ion-label>AHP</ion-label>
+            <ion-select [(ngModel)]='ahpdata' placeholder="Select One">
+                <ion-select-option value="default">{{"WITHOUT" | translate}} meet-in</ion-select-option>
+                <ion-select-option *ngIf='status.statisticresult' value="meetin">meet-in</ion-select-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
+    <div class="fullscreen" id="ahpfullscreen" *ngIf='ahpexec'>
+        <app-settings-map id="map" class='map' [actions]="action" [project]="project" [stakeholders]="stakeholders" (Statistic)="addStats($event)" (output)="outGeojson($event)"></app-settings-map>
+    </div>
+    <ion-row class='ion-justify-content-center' *ngIf='Wvalues[0] !== Wvalues[1]'>
+        <div class="podium">
+            <table id="ladder">
+                <tr>
+                    <td>
+                        <div id="podium1" class='{{functionsLetter[Weight[1]]}}'>
+                            <div class='podium-label' *ngIf='Weight.length>0'>{{functionsLetter[Weight[1]]}}</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="podium0" class='{{functionsLetter[Weight[0]]}}'>
+                            <div class='podium-label' *ngIf='Weight.length>0'>{{functionsLetter[Weight[0]]}}</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="podium2" class='{{functionsLetter[Weight[2]]}}'>
+                            <div class='podium-label' *ngIf='Weight.length>1'>{{functionsLetter[Weight[2]]}}</div>
+                            <div class='podium-label' *ngIf='Weight.length===1'> - </div>
+                        </div>
+                    </td>
+                    <td *ngIf='Weight.length>2'>
+                        <div id="podium3" class='{{functionsLetter[Weight[3]]}}'>
+                            <div class='podium-label'>{{functionsLetter[Weight[3]]}}</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </ion-row>
+    <ion-row class='ion-justify-content-center'>
+        <ion-list *ngIf='Areas !== undefined && this.ahptype==="meetin"' style='width:100%'>
+            <ion-list-header>
+                <ion-label>{{"HOTHEXAGONSTATS" | translate}}</ion-label>
+            </ion-list-header>
+            <ion-row>
+                <ion-col size='3'><b> {{"AREAHOTTOT" | translate}} [ha]</b></ion-col>
+                <ion-col size='2'> {{Areas?.hotarea}} </ion-col>
+
+            </ion-row>
+
+            <ion-row>
+                <ion-col size='3'><b>{{"FUNCTIONS" | translate}}</b></ion-col>
+                <ion-col size='3'><b>{{"AREA" | translate}} [ha]</b></ion-col>
+                <ion-col size='3'><b>{{"MEANVALUE" | translate}}Mean value</b></ion-col>
+                <ion-col size='3'><b>{{"HEXAGONS" | translate}}Hexagons</b></ion-col>
+            </ion-row>
+            <ion-row *ngFor='let area of Areas4funct | keyvalue'>
+
+                <ion-col size='3'> {{functionsLetter[area.key]}}</ion-col>
+                <ion-col size='3'>{{Areas4funct[area.key].hot.area}}</ion-col>
+                <ion-col size='3'> {{Areas4funct[area.key].hot.mean}}</ion-col>
+
+                <ion-col size='3'> {{Areas4funct[area.key].hot.count}} </ion-col>
+            </ion-row>
+        </ion-list>
+        <ion-list *ngIf='Areas !== undefined' style='width:100%'>
+            <ion-list-header>
+                <ion-label>{{"HEXAGONSTATS" | translate}}</ion-label>
+            </ion-list-header>
+            <ion-row>
+                <ion-col size='3'> <b>{{"AREATOT" | translate}}[ha]</b></ion-col>
+                <ion-col size='3'> {{Areas?.tot}}</ion-col>
+
+            </ion-row>
+            <ion-row>
+                <ion-col size='3'><b>{{"FUNCTIONS" | translate}}</b></ion-col>
+                <ion-col size='3'><b>{{"AREA" | translate}} [ha]</b></ion-col>
+                <ion-col size='3'><b>{{"MEANVALUE" | translate}}Mean value</b></ion-col>
+                <ion-col size='3'><b>{{"HEXAGONS" | translate}}Hexagons</b></ion-col>
+            </ion-row>
+            <ion-row *ngFor='let area of Areas4funct | keyvalue'>
+
+                <ion-col size='3'> {{functionsLetter[area.key]}}</ion-col>
+                <ion-col size='3'>{{Areas4funct[area.key].area}}</ion-col>
+                <ion-col size='3'> {{Areas4funct[area.key].mean}}</ion-col>
+
+                <ion-col size='3'> {{Areas4funct[area.key].count}} </ion-col>
+            </ion-row>
+        </ion-list>
+
+    </ion-row>
+    <ion-row *ngIf="Areas !== undefined" class='ion-justify-content-center'>
+        <ion-button (click)="download() "> {{"DOWNLOADMAP" | translate}} </ion-button>
+    </ion-row>
+
+
+</ion-content>

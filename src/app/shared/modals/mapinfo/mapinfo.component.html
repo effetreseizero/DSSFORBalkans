@@ -1,0 +1,138 @@
+<ion-header>
+
+    <ion-toolbar color="primary">
+        <ion-title> {{title | translate}}</ion-title>
+
+        <ion-button slot="secondary" fill="clear" (click)="closeModal()" no-padding>
+            <ion-icon slot="icon-only" name="close" style="color:black;"></ion-icon>
+        </ion-button>
+        <ion-buttons *ngIf="Action==='meetinuser'" slot='start'>
+
+            <ion-button fill='outline' (click)="confirmFunctionChange()"> {{'CONFIRMFUNCTIONCHANGE' | translate}} </ion-button>
+
+        </ion-buttons>
+        <ion-buttons slot='start' *ngIf="Action==='meetinresult'">
+
+            <ion-button (click)='confirmFunctionChange()'>{{"CONFIRMNEWVALUE" | translate}}</ion-button>
+            <ion-button color='danger' (click)='resetValues()'>{{"RESETVALUES" | translate}}</ion-button>
+
+        </ion-buttons>
+
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+    <div *ngIf="action === 'drawhexagon'" class='map'>
+        <app-settings-map [actions]="action" [indexHexagon]="hexindex"></app-settings-map>
+    </div>
+    <ion-list *ngIf="Action==='project' || Action === 'infofunctions' || Action === 'ahpresults'">
+        <ion-item *ngFor="let function of values | keyvalue">
+            <ion-label>
+                {{functionsLetter[function.key]}}
+            </ion-label>
+            <ion-badge color="secondary"> {{function.value}}</ion-badge>
+        </ion-item>
+    </ion-list>
+
+    <ion-list *ngIf="Action==='meetinuser'">
+        <ion-item *ngFor="let function of properties.changedfunctions | keyvalue">
+
+            <ion-label>
+                <p>
+                    <span class='functionlabel'>{{functionsLetter[function.key]}}</span>
+                    <span class='defaltfunction'>
+                        {{this.values[function.key]}}
+                    </span>
+                    <span class='modifyfunction'>{{function.value}}</span>
+                    <span class='functionlabel'><ion-icon style='zoom:1.5' name="help-circle-outline" (click)='hoverModal(function.key)'></ion-icon></span>
+
+                    <!-- <ion-range min="0" max="10" color="secondary" [(ngModel)]="function.value" pin="true" step="1" (ngModelChange)="changeFunction(function)">
+                    <ion-label slot="start">10</ion-label>
+                    <ion-label slot="end">10</ion-label>
+                </ion-range> -->
+                </p><br>
+                <ng5-slider [(value)]="function.value" [options]="options" (valueChange)="changeFunction(function)"></ng5-slider>
+            </ion-label>
+
+
+
+        </ion-item>
+    </ion-list>
+
+
+
+
+    <ion-list *ngIf="Action==='meetinresult'">
+
+        <ion-item-group>
+            <!-- <ion-item-divider>
+                <ion-label>Mofification</ion-label>
+            </ion-item-divider>
+            <ion-item *ngFor="let mod of properties.modification | keyvalue">
+                <ion-label>{{mod.key}}</ion-label>
+                <ion-badge color="primary" slot='end'> {{mod.value}}</ion-badge>
+            </ion-item> -->
+            <ion-item-divider>
+                <ion-label>MeetIn Hexagon values</ion-label>
+            </ion-item-divider>
+            <!-- <ion-item *ngFor="let mod of modifications| keyvalue" style="align-items: center;">
+                <ion-label>{{mod.key}}</ion-label>
+                <ion-badge color="secondary" style='margin-right:auto;' class='centerbadge'>
+                    {{properties.functions[mod.key]}}</ion-badge>
+                <ion-badge *ngFor="let value of mod.value" class='centerbadge'>
+                    {{value}}
+                </ion-badge>
+            </ion-item> -->
+            <ion-grid *ngIf='stats.length > 0'>
+                <ion-row>
+                    <ion-col size='3'> {{"FUNCTION" | translate}}</ion-col>
+                    <ion-col size='2'> {{"MEAN" | translate}}</ion-col>
+                    <ion-col size='2'> n° mods</ion-col>
+                    <ion-col size='2'> dev st.</ion-col>
+                    <ion-col size='3'> Default</ion-col>
+                </ion-row>
+                <ion-row *ngFor='let stat of stats; let i = index;'>
+                    <ion-col size='3'> {{functionsLetter[stat?.id]}}</ion-col>
+                    <ion-col size='2'> {{stat?.mean}}</ion-col>
+                    <ion-col size='2'> {{properties?.modification[stat.id]}} </ion-col>
+
+                    <ion-col size='2'> {{stat?.devSt}}</ion-col>
+                    <ion-col size='3'> {{values[stat.id]}}</ion-col>
+                </ion-row>
+            </ion-grid>
+            <ion-grid *ngIf='stats.length===0'>
+                <ion-row>
+                    <ion-col size='3'> {{"FUNCTION" | translate}}</ion-col>
+                    <ion-col size='2'> {{"MEAN" | translate}}</ion-col>
+                    <ion-col size='2'> n° mods</ion-col>
+                    <ion-col size='2'> dev st.</ion-col>
+                    <ion-col size='3'> Default</ion-col>
+                </ion-row>
+                <ion-row *ngFor='let stat of values | keyvalue; let i = index;'>
+                    <ion-col size='3'> {{functionsLetter[stat?.key]}}</ion-col>
+                    <ion-col size='2'> - </ion-col>
+                    <ion-col size='2'> - </ion-col>
+
+                    <ion-col size='2'> - </ion-col>
+                    <ion-col size='3'> {{stat?.value}}</ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item-group>
+        <ion-item-group>
+            <ion-item-divider>
+                <ion-label>{{"FORCENEWVALUE" | translate}}</ion-label>
+            </ion-item-divider>
+            <ion-item *ngFor="let function of fvalues | keyvalue">
+                <ion-label>
+                    {{functionsLetter[function.key]}}
+                </ion-label>
+                <ion-input type="number" [(ngModel)]='function.value' (ngModelChange)="changeFunction(function)"></ion-input>
+            </ion-item>
+
+
+        </ion-item-group>
+    </ion-list>
+
+
+</ion-content>

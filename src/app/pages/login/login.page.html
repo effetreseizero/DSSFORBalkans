@@ -1,0 +1,85 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-button backButton>
+                <ion-icon size="large" src="assets/icon/backhex.svg" style="stroke:white;"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>{{'LOGIN' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-row class="ion-justify-content-center">
+
+        <p class="logo-row">
+
+            <b>
+      <h2>For Balkans DSS</h2>
+
+    </b>
+            <b>
+        <h2>LOGIN</h2>
+  
+      </b>
+
+        </p>
+
+    </ion-row>
+    <div class="login-box">
+        <form (ngSubmit)="applogin()" #loginForm="ngForm">
+            <ion-row class="ion-justify-content-center">
+                <ion-col size-sm="12" size-md="5">
+                    <ion-list inset>
+
+                        <ion-item lines='none'>
+                            <ion-input type="email" placeholder="Email / Username" name="lemail" [(ngModel)]="registerCredentials.email"></ion-input>
+                        </ion-item>
+
+                        <ion-item lines='none'>
+                            <ion-input type="password" placeholder="Password" name="lpassword" [(ngModel)]="registerCredentials.password"></ion-input>
+                            <!-- <ion-input type="password" #toggleInput1 placeholder="Password" name="lpassword" [(ngModel)]="registerCredentials.password" required></ion-input>
+                          <ion-button class="showhidePass" fill="clear" passwordToggle [appTargetInput]="toggleInput1" [iconname]="pwicon1">
+                              <ion-icon slot="icon-only" #pwicon1 name="eye-off" style="color:rgb(117, 117, 117);"></ion-icon>
+                          </ion-button> -->
+                        </ion-item>
+
+                    </ion-list>
+                </ion-col>
+            </ion-row>
+            <ion-row class="ion-justify-content-center">
+                <ion-col size-sm="12" size-md="5">
+                    <ion-item lines='none' detail='false'>
+                        <ion-label>
+                            <ion-text>
+                                <h5>{{ 'REMEMBERME' | translate }}</h5>
+                            </ion-text>
+                        </ion-label>
+                        <ion-checkbox slot="start" name="rememberme" [(ngModel)]="rememberme"></ion-checkbox>
+
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row class="ion-justify-content-center">
+                <ion-col size-sm="12" size-md="5">
+                    <ion-button expand="full" type="submit" color="primary" [disabled]="!loginForm.form.valid" shape="round">Login</ion-button>
+                    <!-- <button ion-button class="register-btn" block clear (click)="createAccount()">Create New Account</button> -->
+                </ion-col>
+            </ion-row>
+            <ion-row class="ion-justify-content-center">
+                <ion-col size-sm="6" size-md="2">
+                    <!-- <ion-item detail="false" lines="none" tappable  >
+          <ion-label color="primary">forgot password?</ion-label>
+        </ion-item> -->
+
+                </ion-col>
+            </ion-row>
+            <ion-row class="ion-justify-content-center" *ngIf="error">
+                <p class="alert-danger">{{error}}</p>
+            </ion-row>
+        </form>
+    </div>
+    <!-- <ion-button expand="block" routerLink="/menu/mappa">Login</ion-button> -->
+
+</ion-content>

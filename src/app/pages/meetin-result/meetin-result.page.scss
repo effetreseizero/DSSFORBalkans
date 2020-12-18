@@ -1,0 +1,22 @@
+.text-center {
+    text-align: center;
+}
+
+.mappa {
+    height: 80%
+}
+
+.ol-unselectable .ol-layers {
+    height: 80% !important;
+}
+
+@media only screen and (max-device-width: 480px) {
+    /* styles for mobile browsers smaller than 480px; (iPhone) */
+    //  :host ::ng-deep ion-content>.settingsmap>div>div.ol-overlaycontainer-stopevent {
+    //     height: 73% !important;
+    // }
+}
+
+.hide {
+    display: none;
+}

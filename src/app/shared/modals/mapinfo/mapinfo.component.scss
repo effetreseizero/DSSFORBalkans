@@ -1,0 +1,51 @@
+.map {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+}
+
+.centerbadge {
+    text-align: center;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.defaltfunction {
+    background-color: var(--ion-color-primary);
+    margin-left: 5px;
+    margin-right: 5px;
+    font-weight: bold;
+    border: 2px solid var(--ion-color-primary);
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -khtml-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    color: black;
+    padding: 0px 5px;
+    vertical-align: middle;
+}
+
+.modifyfunction {
+    background-color: var(--ion-color-secondary);
+    margin-left: 5px;
+    margin-right: 5px;
+    font-weight: bold;
+    border: 2px solid var(--ion-color-secondary);
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -khtml-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    color: black;
+    padding: 0px 5px;
+    vertical-align: middle;
+}
+
+.functionlabel {
+    color: black;
+    font-weight: bold;
+    margin-left: 5px;
+    margin-right: 5px;
+    vertical-align: middle;
+}

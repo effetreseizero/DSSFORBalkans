@@ -1,0 +1,55 @@
+<ion-content style="height: 100%">
+    <!-- <div data-tap-disabled="true " class="settingsmap " style="height: 100%; min-height:540px "></div> -->
+    <div data-tap-disabled="true " class="settingsmap "></div>
+    <div class="button " style="top: 5em; left:.5em; display: block;position: absolute; background-color: rgba(255, 255, 255, 0.4); border-radius: 4px; padding: 2px; ">
+
+        <ion-button id="drawExtent" class="drawExtent" *ngIf='actions==="extent"'>
+            <ion-icon name="square-outline" [ngStyle]="{ 'color':(isExtentin? '#88ff00cb' : 'white')} "></ion-icon>
+            <!-- <ion-icon src="assets/icon/hexs.svg " [ngStyle]="{ 'stroke ':(isZooming ? '#88ff00cb ' : 'white ')} "></ion-icon> -->
+        </ion-button>
+
+    </div>
+    <div id="maplegend2" class="maplegend2" *ngIf='actions==="meetinresult" || actions==="ahpresults"'>
+        <ion-button id="legendbutton2" class="legendbutton2">
+            <b> L </b>
+        </ion-button>
+        <span class="panel2">
+            <ion-list>
+                <ion-list-header class='lesspadding'>
+                    <ion-label class="ion-text-wrap"><b>Legend</b><br>
+                        Hexagon modification:</ion-label>
+                </ion-list-header>
+                <ion-row class='dot-legend'>
+                    <ion-label>
+                        <ion-icon name="ellipse" style='color:rgba(0,  0,  255, 1)'></ion-icon> Facilitator
+                    </ion-label>
+                </ion-row>
+                <ion-row  class='dot-legend'>
+                    <ion-label>
+                        <ion-icon name="ellipse" style='color:rgba(255,0,  0,   1)'> </ion-icon> Very Hot
+                    </ion-label>
+                </ion-row>
+                <ion-row  class='dot-legend'>
+                    <ion-label>
+                        <ion-icon name="ellipse" style='color:rgba(255,150,20,  1)'></ion-icon> Hot
+                    </ion-label> 
+                </ion-row>
+                <ion-row  class='dot-legend'>
+                    <ion-label>
+                        <ion-icon name="ellipse" style='color:rgba(255,255,53,  1)'></ion-icon> Medium
+                    </ion-label>
+                </ion-row>
+                <ion-row  class='dot-legend'>
+                    <ion-label>
+                        <ion-icon name="ellipse" style='color:rgba(200,200,200, 0.75)'></ion-icon> Low
+                    </ion-label>
+                </ion-row>
+                <ion-row  class='dot-legend'>
+                    <ion-label>
+                        <ion-icon name="ellipse" style='color:rgba(255,255,255, 0)'></ion-icon> None
+                    </ion-label>
+                </ion-row>
+            </ion-list>
+        </span>
+    </div>
+</ion-content>

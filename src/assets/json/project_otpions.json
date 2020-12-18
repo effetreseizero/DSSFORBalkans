@@ -1,0 +1,11 @@
+{
+    "projectoptions": [{
+        "name": "duration",
+        "type": "radio",
+        "chldren": [{
+            "name": "today"
+        }, {
+            "name": "until"
+        }]
+    }]
+}

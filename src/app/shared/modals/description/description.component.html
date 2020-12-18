@@ -1,0 +1,26 @@
+<ion-header>
+
+    <ion-toolbar color="{{body}}">
+        <ion-title class="white_text">{{title | translate}}</ion-title>
+
+        <ion-button slot="secondary" fill="clear" (click)="closeModal()" no-padding>
+            <ion-icon slot="icon-only" name="close" class="white_text"></ion-icon>
+        </ion-button>
+
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content class='ion-padding'>
+    <ion-text>
+        <h4> <b>{{subtitle}}</b> </h4>
+    </ion-text>
+    <ion-text>
+        <!-- {{body | translate}} -->
+        <p [innerHTML]="body | translate"></p>
+    </ion-text>
+    <br>
+    <img *ngIf='body === "FP" || body === "FT" || body === "FC" || body === "FM" ' src='assets/imgs/{{body}}.png' height="300" width="300">
+
+
+</ion-content>

@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>{{'SETTINGS' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row class="ion-justify-content-center">
+        <ion-col size-sm="12" size-md="5">
+            <ion-button expand="full" (click)="openLanguagePopover($event)">
+
+                <img slot='end' src='assets/imgs/icons/agtranslate.png' height="30" width="30" style='margin-right:10px;margin-left:10px;'> {{'CHANGELANGUAGE' | translate}}
+            </ion-button>
+            <!-- <button ion-button class="register-btn" block clear (click)="createAccount()">Create New Account</button> -->
+        </ion-col>
+    </ion-row>
+</ion-content>

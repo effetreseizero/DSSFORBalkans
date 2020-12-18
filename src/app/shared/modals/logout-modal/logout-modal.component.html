@@ -1,0 +1,23 @@
+<ion-header>
+
+    <ion-toolbar color="primary">
+        <ion-title> {{'LOGOUT' | translate}}</ion-title>
+
+        <ion-button slot="secondary" fill="clear" (click)="closeModal()" no-padding>
+            <ion-icon slot="icon-only" name="close" style="color:black;"></ion-icon>
+        </ion-button>
+
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding>
+    <ion-text>
+        <p>Do you really, want lo leave from this page? </p>
+        <p> <b>{{stakeholder.name}}</b> you will can return here with code <b>{{project.code}}</b> until <b>{{untildate}}</b></p>
+    </ion-text>
+    <ion-row style="position:fixed; left:0; right:0; bottom:10px" class="ion-justify-content-center">
+        <ion-button (click)="closeModal()"> Logout </ion-button>
+        <ion-button (click)="returnBack()"> Return </ion-button>
+    </ion-row>
+</ion-content>

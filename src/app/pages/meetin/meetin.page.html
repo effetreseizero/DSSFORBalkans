@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-button backButton>
+                <ion-icon size="large" src="assets/icon/backhex.svg" style="stroke:white;"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>{{'MEETIN' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-row class="ion-justify-content-center">
+
+        <p class="logo-row">
+
+            <b>
+              <h2>For Balkans DSS</h2>
+        
+            </b>
+            <b>
+                <h2>MEET IN</h2>
+          
+              </b>
+
+        </p>
+
+    </ion-row>
+    <div class="login-box">
+        <form (ngSubmit)="meetIn(meetinForm)" #meetinForm="ngForm">
+            <ion-row class="ion-justify-content-center">
+                <ion-col size-sm="12" size-md="5">
+                    <ion-list inset>
+
+                        <ion-item>
+                            <ion-input type="text" placeholder="Insert your Partecipatory code" name="meetincode" [(ngModel)]="code"></ion-input>
+                        </ion-item>
+
+                    </ion-list>
+                </ion-col>
+            </ion-row>
+            <ion-row class="ion-justify-content-center">
+                <ion-col size-sm="12" size-md="5">
+                    <ion-button expand="full" type="submit" color="primary" shape="round">Meet In</ion-button>
+                    <!-- <button ion-button class="register-btn" block clear (click)="createAccount()">Create New Account</button> -->
+                </ion-col>
+            </ion-row>
+        </form>
+    </div>
+</ion-content>

@@ -1,0 +1,125 @@
+.text-center {
+    text-align: center;
+}
+
+.mappa {
+    height: 80%;
+}
+
+.ol-unselectable .ol-layers {
+    height: 80% !important;
+}
+
+// @media only screen and (max-device-width: 480px) {
+//     /* styles for mobile browsers smaller than 480px; (iPhone) */
+//      :host ::ng-deep ion-content>.settingsmap>div>div.ol-overlaycontainer-stopevent {
+//         height: 73% !important;
+//     }
+// }
+.fullscreen:-moz-full-screen {
+    height: 100%;
+}
+
+.fullscreen:-webkit-full-screen {
+    height: 100%;
+}
+
+.fullscreen:-ms-fullscreen {
+    height: 100%;
+}
+
+.fullscreen:fullscreen {
+    height: 100%;
+}
+
+.fullscreen {
+    margin-bottom: 10px;
+    width: 100%;
+    height: 300px;
+}
+
+.fullscreen.stakeholder {
+    margin-bottom: 10px;
+    width: 100%;
+    height: 75%;
+}
+
+.map {
+    width: 100%;
+    height: 100%;
+    float: left;
+    z-index: 99;
+    position: inherit;
+}
+
+.map.expandmap {
+    position: absolute;
+    z-index: 99;
+}
+
+.homepage {
+    z-index: 98;
+}
+
+.homepage.hideitem {
+    display: none;
+}
+
+.resizemap {
+    --text-decoration: none;
+    --background: rgba(0, 60, 136, 0.5);
+    --background-hover: rgba(0, 60, 136, 0.8);
+    margin: 3px;
+    display: block;
+    --padding-bottom: 0;
+    --padding-end: 0;
+    --padding-start: 0;
+    --padding-top: 0;
+    --font-size: 1.14em;
+    --font-weight: bold;
+    --text-decoration: none;
+    --text-align: center;
+    height: 1.75em;
+    width: 1.75em;
+    z-index: 120;
+    --line-height: .4em;
+    --border: none;
+    color: #ffffff;
+}
+
+.resizemap::hover {
+    --text-decoration: none;
+    --padding-bottom: 0;
+    --padding-end: 0;
+    --padding-start: 0;
+    --padding-top: 0;
+    --font-size: 1.14em;
+    --font-weight: bold;
+    --text-decoration: none;
+    --text-align: center;
+    --background: rgba(0, 60, 136, 0.8);
+    cursor: pointer;
+    color: #ffffff;
+    z-index: 120;
+}
+
+.resizemap ion-icon {
+    color: #ffffff;
+    --background: rgba(0, 60, 136, 0.7);
+}
+
+.buttondiv {
+    top: 5.25em;
+    left: 0.5em;
+    position: absolute;
+    z-index: 120;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    //padding: 2px;
+    color: #fff;
+}
+
+.buttondiv.hideitem {
+    display: none;
+}

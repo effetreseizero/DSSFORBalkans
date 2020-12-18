@@ -1,0 +1,70 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>{{'PROJECTS' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item-group>
+        <ion-item-divider>
+            <ion-label> {{"ADDNEWPROJECT" | translate}}</ion-label>
+            <ion-fab-button size="small" slot="start" (click)="createproject()">
+                <ion-icon size="large" src="assets/icon/add.svg" style="stroke:white;"></ion-icon>
+            </ion-fab-button>
+        </ion-item-divider>
+    </ion-item-group>
+    <ion-item-group>
+        <ion-item-divider>
+            <ion-label>{{'POJECTSLIST' | translate}}</ion-label>
+        </ion-item-divider>
+        <ion-item-sliding *ngFor="let project of projects; let i = index" size-sm="12" size-md="12" style="width:100%" class="itemhover">
+            <ion-item (click)="gotoproject(project)">
+                <!-- <ion-badge slot="start" style="margin-left:3px;margin-right:2px">
+            
+                </ion-badge> -->
+                <ion-label>{{project.name}}</ion-label>
+                <ion-thumbnail slot="end">
+                    <img src="https://gravatar.com/avatar/{{project.id}}?d=identicon&f=y">
+                </ion-thumbnail>
+            </ion-item>
+            <ion-item-options side="end">
+                <ion-item-option color="success" (click)="copyproject(project)">
+                    <ion-icon name="copy-outline" style="height: 25px; width: 25px;"></ion-icon>
+                </ion-item-option>
+                <ion-item-option color="secondary" (click)="updateproject(project)">
+                    <ion-icon name="ellipsis-vertical" style="height: 25px; width: 25px;"></ion-icon>
+                </ion-item-option>
+                <ion-item-option color="danger" (click)="deleteproject(project)">
+                    <ion-icon name="trash" style="height: 25px; width: 25px; "></ion-icon>
+                </ion-item-option>
+
+            </ion-item-options>
+        </ion-item-sliding>
+
+    </ion-item-group>
+
+    <!-- <ion-item-group *ngIf="pesticides?.length > 0">
+        <ion-item-divider>
+            <ion-label>Fitosanitari</ion-label>
+        </ion-item-divider>
+        <ion-item-sliding *ngFor="let product of pesticides; let i = index" size-sm="12" size-md="12" style="width:100%" class="itemhover">
+            <ion-item (click)="productclicked(product)">
+                <ion-badge slot="start" style="margin-left:3px;margin-right:2px">
+                    <ion-label>{{product.PRODOTTO}}</ion-label>
+                </ion-badge>
+
+            </ion-item>
+            <ion-item-options side="end">
+                <ion-item-option color="warning" (click)="deleteproduct(product)">
+                    <ion-icon name="trash" style="height: 25px; width: 25px; "></ion-icon>
+                </ion-item-option>
+
+            </ion-item-options>
+        </ion-item-sliding>
+
+    </ion-item-group> -->
+
+</ion-content>

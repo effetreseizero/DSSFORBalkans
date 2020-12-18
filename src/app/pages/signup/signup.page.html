@@ -1,0 +1,59 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-button backButton>
+                <ion-icon size="large" src="assets/icon/backhex.svg" style="stroke:white;"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>{{'SIGNUP' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-grid>
+        <form [formGroup]="registerForm" (ngSubmit)="registerMe()">
+            <ion-row class="ion-justify-content-center">
+                <ion-list>
+                    <ion-item lines="none">
+                        <ion-label>Email</ion-label>
+                        <ion-input type="text" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"></ion-input>
+                        <!-- <ion-row *ngIf="submitted && !!f.email.errors" class="invalid-feedback">
+                            <ion-row *ngIf="!!f.email.errors.required">Email is required</ion-row>
+                            <ion-row *ngIf="!!f.email.errors.email">Email must be a valid email address</ion-row>
+                        </ion-row> -->
+                    </ion-item>
+                    <ion-item lines="none">
+                        <ion-label>Password</ion-label>
+                        <ion-input type="password" #toggleInput1 formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"></ion-input>
+                        <ion-button class="showhidePass" fill="clear" passwordToggle [appTargetInput]="toggleInput1" [iconname]="pwicon1">
+                            <ion-icon slot="icon-only" #pwicon1 name="eye-off" style="color:black;"></ion-icon>
+                        </ion-button>
+                        <!-- <ion-row *ngIf="!!f.password.errors" class="invalid-feedback">
+                            <ion-row *ngIf="!!f.password.errors.required">Password is required</ion-row>
+                            <ion-row *ngIf="!!f.password.errors.minlength">Password must be at least 6 characters</ion-row>
+                        </ion-row> -->
+                    </ion-item>
+                    <ion-item lines="none">
+                        <ion-label>{{"CONFIRMPASSWORD" | translate}}</ion-label>
+                        <ion-input type="password" #toggleInput2 formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"></ion-input>
+                        <ion-button class="showhidePass" fill="clear" passwordToggle [appTargetInput]="toggleInput2" [iconname]="pwicon2">
+                            <ion-icon slot="icon-only" #pwicon2 name="eye-off" style="color:black;"></ion-icon>
+                        </ion-button>
+                        <!-- <div *ngIf="!!f.confirmPassword.errors" class="invalid-feedback">
+                            <ion-row *ngIf="!!f.confirmPassword.errors.required">Confirm Password is required</ion-row>
+                            <ion-row *ngIf="!!f.confirmPassword.errors.mustMatch">Passwords must match</ion-row>
+                        </div> -->
+                    </ion-item>
+
+
+                    <ion-row class="ion-justify-content-center">
+                        <ion-button expand="full" type="submit" color="primary" [disabled]="!registerForm.valid">
+                            {{"REGISTERME" | translate}}
+                        </ion-button>
+                    </ion-row>
+                </ion-list>
+            </ion-row>
+        </form>
+    </ion-grid>
+
+</ion-content>

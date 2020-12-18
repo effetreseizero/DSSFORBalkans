@@ -1,0 +1,123 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-button backButton>
+                <ion-icon size="large" src="assets/icon/backhex.svg" style="stroke:white;"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>{{crudproject | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!-- <form [formGroup]="formProject" (ngSubmit)="saveProject(formProject)" *ngIf='crudproject === "CREATEPROJECT"'>  -->
+    <form [formGroup]="formProject" (ngSubmit)="saveProject(formProject)">
+        <ion-card>
+
+            <ion-card-content>
+                <ion-item-group>
+                    <ion-item>
+                        <ion-label>{{"PROJECTNAME" | translate}}</ion-label>
+                        <ion-input type="text" formControlName="name" placeholder="{{ 'INSERTPROJECTNAME' | translate }}"></ion-input>
+                    </ion-item>
+                    <!-- <ion-item>
+                        <ion-label>Description</ion-label>
+                        <ion-input type="text" formControlName="description" placeholder="{{ 'INSERTPROJECTDESCRIPTION' | translate }}"></ion-input>
+                    </ion-item> -->
+                </ion-item-group>
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+
+            <ion-card-content>
+                <ion-item-group>
+                    <ion-list>
+                        <ion-list-header>
+                            {{"SELECTEXTENTFROMLIST" | translate}}
+                        </ion-list-header>
+
+                        <ion-item>
+                            <ion-label>{{"EXTENTLIST" | translate}}</ion-label>
+                            <ion-select formControlName="scenario_id" (ionChange)='changeScenario($event)' [disabled]='crudproject === "UPDATEPROJECT"'>
+                                <ion-select-option *ngFor="let ext of extentList" value={{ext.name}}> {{ext.name}} </ion-select-option>
+                            </ion-select>
+                        </ion-item>
+
+                    </ion-list>
+                    <ion-list>
+                        <ion-radio-group formControlName='resolution' (ionChange)="changeResolution($event)">
+                            <ion-list-header>
+                                <ion-label colo='black'>{{"HEXGRIRESOLUTION" | translate}}
+                                    <ion-icon slot='end' name="help-circle-outline" style='font-size: 24px;' (click)='hoverModal()'></ion-icon>
+                                </ion-label>
+                            </ion-list-header>
+
+                            <ion-item>
+                                <ion-label>{{"HIGHRESOLUTION" | translate}}</ion-label>
+                                <ion-radio value="high" [disabled]='crudproject === "UPDATEPROJECT"'></ion-radio>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label>{{"MEDIUMRESOLUTION" | translate}}</ion-label>
+                                <ion-radio value="medium" [disabled]='crudproject === "UPDATEPROJECT"'>
+                                </ion-radio>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label>{{"LOWRESOLUTION" | translate}}</ion-label>
+                                <ion-radio value="low" [disabled]='crudproject === "UPDATEPROJECT"'>
+                                </ion-radio>
+                            </ion-item>
+
+
+                        </ion-radio-group>
+                        <br>
+                        <ion-item-group>
+                            <ion-row class="ion-justify-content-center">
+                                <ion-col size-sm="12" size-md="5">
+                                    <ion-button *ngIf='!isHexSelect' expand="full" color="primary" (click)="changeExtent()"> {{"PHSELECTION" | translate}}</ion-button>
+                                    <ion-button *ngIf='isHexSelect' expand="full" color="danger" (click)="resetExtent()"> {{"RESETSELECTION" | translate}}</ion-button>
+
+                                </ion-col>
+                            </ion-row>
+
+
+
+
+                        </ion-item-group>
+                    </ion-list>
+
+                </ion-item-group>
+            </ion-card-content>
+        </ion-card>
+        <ion-card>
+
+            <ion-card-content>
+                <ion-item-group>
+                    <ion-list>
+                        <ion-list-header>
+                            {{'FORESTRIVERFUNCTION' | translate}}
+                        </ion-list-header>
+                        <ion-item *ngFor="let entry of ferFunct; let i = index;">
+                            <ion-label>{{entry.letter}}: {{Functions[entry.id]}}</ion-label>
+                            <ion-checkbox slot="end" [value]="[entry.id,i]" [checked]='selectedFunctions.indexOf(i)>-1' (ionChange)=onCheckChange($event) [disabled]='crudproject === "UPDATEPROJECT"'></ion-checkbox>
+                        </ion-item>
+
+                    </ion-list>
+                </ion-item-group>
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+            <ion-item-group>
+                <ion-list>
+                    <ion-row class="ion-justify-content-center">
+                        <ion-button type="submit" [disabled]="!formProject.valid || !checkFerFunct()"> {{"SAVE" | translate}} </ion-button>
+                    </ion-row>
+                </ion-list>
+            </ion-item-group>
+        </ion-card>
+
+    </form>
+</ion-content>

@@ -1,0 +1,29 @@
+<ion-header>
+
+    <ion-toolbar color="primary">
+        <ion-title>{{title}}</ion-title>
+
+        <ion-button slot="secondary" fill="clear" (click)="closeModal()" no-padding>
+            <ion-icon slot="icon-only" name="close" style="color:black;"></ion-icon>
+        </ion-button>
+
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row class='ion-justify-content-center'>
+            <ion-text> {{text | translate}} </ion-text>
+        </ion-row>
+        <ion-row class='ion-justify-content-center'>
+
+            <ion-button (click)=presentActionSheet()>
+                {{title}}
+            </ion-button>
+
+        </ion-row>
+    </ion-grid>
+
+
+</ion-content>

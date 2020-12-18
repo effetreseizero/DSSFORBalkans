@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-button backButton>
+                <ion-icon size="large " src="assets/icon/backhex.svg " style="stroke:white; "></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button (click)="refresh()">
+                <ion-icon style="zoom:1.5;" name="refresh-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button fill='outline' (click)="changeStats(statistic)"> {{"CONFIRMSTATS" | translate}} </ion-button>
+        </ion-buttons>
+        <ion-title>{{'MEETINDISCUSSIONPAGE' | translate}}</ion-title>
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+    <div class='mappa' *ngIf='meetinresultmap'>
+        <app-settings-map [actions]="action" [project]="project" [stakeholders]="stakeholders"></app-settings-map>
+    </div>
+
+    <ion-list>
+        <ion-item>
+            <ion-label> {{"CONFIRMSTATS" | translate}} </ion-label>
+            <ion-select [(ngModel)]='statistic' (ionChange)='changeStatistic($event)'>
+                <ion-select-option value='mean' selected=true> {{"MEAN" | translate}} </ion-select-option>
+                <ion-select-option value='mode'> {{"MODE" | translate}} </ion-select-option>
+                <ion-select-option value='median'> {{"MEDIAN" | translate}} </ion-select-option>
+                <!-- <ion-select-option value='devst'> dev. st. </ion-select-option>
+                <ion-select-option value='modifications'> Modification </ion-select-option> -->
+            </ion-select>
+        </ion-item>
+    </ion-list>
+    <!-- <ion-row style="position:fixed; left:0; right:0; bottom:10px" class="ion-justify-content-center">
+        <ion-button (click)="changeStats(statistic)"> Confirm statistic </ion-button>
+
+    </ion-row> -->
+
+</ion-content>

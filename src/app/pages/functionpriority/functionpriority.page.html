@@ -1,0 +1,129 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-button backButton>
+                <ion-icon size="large " src="assets/icon/backhex.svg " style="stroke:white; "></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button fill='outline' (click)="updateFP()"> {{"CONFIRMPRIORITY" | translate}} </ion-button>
+        </ion-buttons>
+        <ion-title>{{'FPPAGE' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-row class='ion-justify-content-center'>
+        <ion-col class='text-center' size="3">{{"FUNCTION" | translate}}</ion-col>
+        <ion-col class='text-center' size="6">{{"PRIORITY" | translate}}</ion-col>
+        <ion-col class='text-center' size="3">{{"FUNCTION" | translate}}</ion-col>
+    </ion-row>
+    <ion-row *ngFor='let func of project.functionpriority; let i = index' class='ion-justify-content-center'>
+
+        <ion-col class='text-center' align-self-center size="3">{{functionsLetter[func[0]]}}</ion-col>
+        <ion-col class='text-center ion-justify-content-center' size="6">
+            <ion-row>
+                <ion-col tappable id={{func[0]+func[1]+number.id+number.func}} *ngFor="let number of numbers[i];" class='priorityselector' (click)='changeFuncPriorities(i, func, number.id, number.func)'>
+                    <ion-label>{{number.id}}</ion-label>
+                </ion-col>
+            </ion-row>
+        </ion-col>
+        <ion-col class='text-center' align-self-center size="3">{{functionsLetter[func[1]]}}</ion-col>
+    </ion-row>
+    <ion-row class='ion-justify-content-center' *ngIf='Wvalues[0] !== Wvalues[1]'>
+        <div class="podium">
+            <table id="ladder">
+                <tr>
+                    <td>
+                        <div id="podium1" class='{{functionsLetter[Weight[1]]}}'>
+                            <div class='podium-label' *ngIf='Weight.length>0'>{{functionsLetter[Weight[1]]}}</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="podium0" class='{{functionsLetter[Weight[0]]}}'>
+                            <div class='podium-label' *ngIf='Weight.length>0'>{{functionsLetter[Weight[0]]}}</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="podium2" class='{{functionsLetter[Weight[2]]}}'>
+                            <div class='podium-label' *ngIf='Weight.length>1'>{{functionsLetter[Weight[2]]}}</div>
+                            <div class='podium-label' *ngIf='Weight.length===1'> - </div>
+                        </div>
+                    </td>
+                    <td *ngIf='Weight.length>2'>
+                        <div id="podium3" class='{{functionsLetter[Weight[3]]}}'>
+                            <div class='podium-label'>{{functionsLetter[Weight[3]]}}</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </ion-row>
+    <ion-row>
+
+        <ion-card class='info-card' id='info-card'>
+            <ion-card-header tappable (click)="expandItem()">
+
+                <ion-item lines='none'>
+                    <ion-label> {{'PRIORITYINFORMATION' | translate}}
+
+                    </ion-label>
+                    <ion-icon slot='end' name="chevron-forward-outline" [ngClass]='collapsed ? "gly-rotate-0" : "gly-rotate-90"'></ion-icon>
+                </ion-item>
+            </ion-card-header>
+            <ion-card-content id='info-content' class='info-content hidecard'>
+                <ion-item-group>
+                    <ion-item-divider>
+                        {{'FORESTRIVERFUNCTION' | translate}}
+                    </ion-item-divider>
+
+                    <ion-item *ngFor='let funct of project.functions; let i=index'>
+                        <ion-label>{{functionsLetter[funct]}}: {{Functions[funct]}}</ion-label>
+                        <ion-icon slot='end' name="help-circle-outline" (click)='hoverModal(funct)'></ion-icon>
+                    </ion-item>
+
+                </ion-item-group>
+                <br>
+                <ion-grid>
+                    <ion-row class='ion-justify-content-center'>
+                        <ion-label>
+                            <h2><b>{{'PRIORITY' | translate}}</b></h2>
+                        </ion-label>
+                    </ion-row>
+                    <ion-row class='ion-justify-content-center'>
+                        <ion-col class='text-center'><b>Fi</b></ion-col>
+
+                        <ion-col class='text-center'><b>Fj</b></ion-col>
+                    </ion-row>
+                    <ion-row class='ion-justify-content-center'>
+
+                        <ion-col class='text-center'>{{'PRIORITYExtremefavors' | translate}}</ion-col>
+                        <ion-col class='text-center'>{{'PRIORITYVerystrongfavors' | translate}}</ion-col>
+                        <ion-col class='text-center'>{{'PRIORITYStronglyfavors' | translate}}</ion-col>
+                        <ion-col class='text-center'>{{'PRIORITYSlightlyfavors' | translate}}</ion-col>
+                        <ion-col class='text-center'>{{'PRIORITYEqual' | translate}}</ion-col>
+                        <ion-col class='text-center'>{{'PRIORITYSlightlyfavors' | translate}}</ion-col>
+                        <ion-col class='text-center'>{{'PRIORITYStronglyfavors' | translate}}</ion-col>
+                        <ion-col class='text-center'>{{'PRIORITYVerystrongfavors' | translate}}</ion-col>
+                        <ion-col class='text-center'>{{'PRIORITYExtremefavors' | translate}}</ion-col>
+
+                    </ion-row>
+                    <ion-row class='ion-justify-content-center'>
+                        <ion-col class='text-center'>9</ion-col>
+                        <ion-col class='text-center'>7</ion-col>
+                        <ion-col class='text-center'>5</ion-col>
+                        <ion-col class='text-center'>3</ion-col>
+                        <ion-col class='text-center'>1</ion-col>
+                        <ion-col class='text-center'>3</ion-col>
+                        <ion-col class='text-center'>5</ion-col>
+                        <ion-col class='text-center'>7</ion-col>
+                        <ion-col class='text-center'>9</ion-col>
+                    </ion-row>
+
+
+                </ion-grid>
+            </ion-card-content>
+        </ion-card>
+    </ion-row>
+</ion-content>

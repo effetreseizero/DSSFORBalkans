@@ -1,0 +1,73 @@
+<ion-content class="ion-padding" style="background-image: url('assets/imgs/sfondo.jpg');">
+    <ion-row class="ion-justify-content-center">
+
+        <p class="logo-row">
+
+            <b>
+    <h2>For Balkans</h2>
+
+  </b>
+            <b>
+      <h2>Decision Support System</h2>
+
+    </b>
+
+        </p>
+
+    </ion-row>
+    <div class="login-box">
+
+
+        <ion-row class="ion-justify-content-center">
+            <ion-col size-sm="12" size-md="5">
+                <ion-button expand="full" color="primary" (click)='routing(meetin)'>{{'MEETIN' | translate}} </ion-button>
+                <!-- <button ion-button class="register-btn" block clear (click)="createAccount()">Create New Account</button> -->
+            </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+            <ion-col size-sm="12" size-md="5">
+                <ion-button expand="full" color="primary" (click)='routing(login)'>{{'LOGIN' | translate}} </ion-button>
+                <!-- <button ion-button class="register-btn" block clear (click)="createAccount()">Create New Account</button> -->
+            </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+            <ion-col size-sm="12" size-md="5">
+                <ion-button expand="full" color="primary" (click)='routing(signup)'>{{'SIGNUP' | translate}} </ion-button>
+                <!-- <button ion-button class="register-btn" block clear (click)="createAccount()">Create New Account</button> -->
+            </ion-col>
+        </ion-row>
+        <br><br>
+        <ion-row class="ion-justify-content-center">
+            <ion-col size-sm="12" size-md="5">
+                <ion-button expand="full" color="primary" (click)='goToLink()'>
+                    FOR Balkans Website
+                </ion-button>
+
+            </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+            <ion-col size-sm="12" size-md="5">
+                <ion-button expand="full" (click)="openLanguagePopover($event)">
+
+                    <img slot='end' src='assets/imgs/icons/agtranslate.png' height="30" width="30" style='margin-right:10px;margin-left:10px;'> {{'CHANGELANGUAGE' | translate}}
+                </ion-button>
+
+            </ion-col>
+        </ion-row>
+
+    </div>
+    <!-- <ion-button expand="block" routerLink="/menu/mappa">Login</ion-button> -->
+
+</ion-content>
+<!-- <ion-footer>
+    <ion-row class="ion-justify-content-center">
+        <ion-col size-sm="12" size-md="5">
+            <ion-button expand="full" (click)="openLanguagePopover($event)">
+
+                <img slot='end' src='assets/imgs/icons/agtranslate.png' height="30" width="30" style='margin-right:10px;margin-left:10px;'> {{'CHANGELANGUAGE' | translate}}
+            </ion-button>
+ 
+        </ion-col>
+    </ion-row>
+
+</ion-footer> -->

@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>{{'MAP' | translate}}</ion-title>
+        <!-- <ion-buttons slot="end">
+            <ion-button (click)="openLanguagePopover($event)">
+                <img src='assets/imgs/icons/agtranslate.png' height="30" width="30">
+            </ion-button>
+
+        </ion-buttons> -->
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div id="mappa" data-tap-disabled="true" class="mappa"></div>
+    <!-- <div>
+        <ion-button id="export-png" (click)='mapExport()'>
+            <ion-icon name="download"></ion-icon> Download PNG</ion-button>
+        <a id="image-download" download="map.png" crossorigin="anonymous"></a>
+    </div> -->
+</ion-content>

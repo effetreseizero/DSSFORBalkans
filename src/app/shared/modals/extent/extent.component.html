@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-toolbar color="primary">
+
+        <ion-button slot="secondary" fill="clear" (click)="closeModal()" no-padding>
+            <ion-icon slot="icon-only" name="close" style="color:black;"></ion-icon>
+        </ion-button>
+        <ion-buttons *ngIf='addextent' slot="start" no-padding>
+            <ion-button fill='outline' (click)='confirmExtent()'>
+                <ion-text><b>{{'CONFIRMSELECTION' | translate}}</b></ion-text>
+            </ion-button>
+        </ion-buttons>
+
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <app-settings-map [actions]="action" [extent]="extent" [scenario]='scenario' [resolution]='resolution' (output)="mapoutput($event)" class="mappa"></app-settings-map>
+</ion-content>
