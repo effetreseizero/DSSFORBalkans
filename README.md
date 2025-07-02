@@ -28,8 +28,7 @@ DSSFORBalkans is an open-source platform focused on leveraging data to support d
 
 - **TypeScript** (primary language)
 - **HTML**, **JavaScript**, **SCSS**  
-- Frameworks/Libraries: *(add details like React, Angular, Vue, etc. if used)*
-- Build tools: *(add details like Webpack, Vite, etc. if used)*
+
 
 ## Getting Started
 
