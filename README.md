@@ -1,6 +1,9 @@
 # DSSFORBalkans
 
-A Decision Support System for the Balkans, designed to provide advanced analytics, visualization, and data-driven insights for stakeholders in the region.
+
+A Decision Support System for the Balkans, designed to provide advanced analytics, visualization, and data-driven insights for stakeholders in the region. This system draws upon methodologies outlined in recent academic research which highlight the importance of integrating economic, environmental, and social indicators for sustainable regional development. By leveraging multi-criteria analysis and geospatial data, the system supports informed decision-making processes—enabling stakeholders to evaluate development scenarios, assess sustainability, and formulate effective regional policies tailored to the unique challenges of the Balkan Peninsula.
+
+---
 
 ## Table of Contents
 
